@@ -1,0 +1,30 @@
+
+<h1>Welcome to the Portland Music Exchange!</h1>
+<%= link_to "Change Your Password", edit_user_password_path %>
+<h2>Listing Posts</h2>
+<%= render partial: 'filter' %>
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tr>
+    <th class= "thead-dark">Title</th>
+    <th>Category</th>
+    <th>Posted By</th>
+    <th>Date Created</th>
+    <th></th>
+  </tr>
+  
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%=link_to post.title, post_path(post) %></td>
+      <td><%= post.category.name%></td>
+      <td><%= post.user.username %></td>
+      <td><%= post.created_at.strftime('%m/%d/%Y')%></td>
+      <td><%= if current_user == post.user 
+      link_to 'Edit', edit_post_path(post) end  %></td>
+      <td><%= if current_user == post.user 
+      link_to link_to 'Destroy', post_path(post),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } end %> </td>
+
+    </tr>
+  <% end %>
+</table>

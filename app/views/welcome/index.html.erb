@@ -1,0 +1,6 @@
+<h1>Welcome to the Portland Music Exchange!</h1>
+<%= link_to 'All Postings', posts_path %>
+<%=link_to 'New Posting', new_user_post_path(@user) %>
+<%= link_to 'Your Postings', user_posts_path(@user) %><br>
+<%= link_to "Your Account", user_path(@user)%>
+

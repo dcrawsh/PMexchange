@@ -1,0 +1,32 @@
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+ 
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+<p>
+  <strong>Posted By:</strong>
+  <%= @post.user.username %>
+</p>
+<p>
+  <strong>Images:</strong>
+  <% @post.images.each do |image| %>
+    <%=image_tag(image)%>
+    
+    <% end %>
+</p>
+
+<p>
+<strong>Comments:</strong>
+</p>
+<%= render @post.comments%>
+
+<p>Add a comment:<p>
+<%= render 'comments/form'%>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
