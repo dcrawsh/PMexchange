@@ -10,7 +10,8 @@ class PostsController < ApplicationController
       @posts = Post.by_category(params[:post][:category_id])
     elsif !params[:date].blank?
       @posts = Post.by_date(params[:date])
-      
+    elsif !params[:q].blank?
+      @posts = Post.where("title LIKE ?", "%#{params[:q]}%")
     else
       @posts = Post.all
     end

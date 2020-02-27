@@ -1,4 +1,9 @@
 <form action="/posts" method="get">
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+
+<form action="/posts" method="get">
   <%= label_tag(:category, "Filter for:") %>
   <%= collection_select(:post, :category_id, Category.all, :id, :name, prompt: "Category")  %> 
   <%= select_tag "date", options_for_select(["Oldest", "Newest"]), prompt: "Relevance"%>
